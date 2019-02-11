@@ -54,9 +54,9 @@ def test_main(input_path, output_path):
         #check the value has two numbers and two numbers only
         a = random.randint(1, len(sample_output)-1)
         a_text= sample_output[a].split(',')
-        assert int(a_text[1]) >= 1, \
+        assert float(a_text[1]) >= 1, \
             'the number of unique patients has exceptional value'
-        assert int(a_text[2]) > 0, \
+        assert round(float(a_text[2].rstrip('\n')),2) > 0, \
             'the number of total cost has exceptional value'
 
 
@@ -65,7 +65,7 @@ def test_main(input_path, output_path):
         b_text = sample_output[b].split(',')
         b_next_text = sample_output[b+1].split(',')
         
-        assert int(b_text[2].rstrip('\n')) >= int(b_next_text[2].rstrip('\n')), \
+        assert round(float(b_text[2].rstrip('\n')),2) >= round(float(b_next_text[2].rstrip('\n')),2), \
             'cost is not ranked in a descending order'
     
         #check the ascending order of names among those with the same cost 
@@ -74,6 +74,7 @@ def test_main(input_path, output_path):
         counts = dict()
         for line in sample_output: 
             drug_name, num_patient, cost = line.split(',')
+            cost = cost.rstrip('\n')
             counts[cost] = counts.get(cost, 0) + 1
         
         if max([c for k, c in counts.items()]) == 1: 
@@ -86,11 +87,12 @@ def test_main(input_path, output_path):
             drug = {}
             for line in sample_output[1:]: 
                 drug_name, patient, cost = line.split(',')
+                cost = cost.rstrip('\n')
                 drug[drug_name] = cost 
 
             names = [name for name, cost in drug.items() if cost == tie[c] ] 
             check = True 
-            for i in range(len(names)): 
+            for i in range(len(names) - 1): 
                 if names[i] > names[i+1]: 
                     check = False 
 
