@@ -1,7 +1,7 @@
 # Table of Contents
 1. [Problem](README.md#problem)
-1. [Design][README.md#design]
-1. [Repo directory structure][README.md#structure]
+1. [Design](README.md#design)
+1. [Repo directory structure](README.md#structure)
 1. [Instruction](README.md#instruction)
 1. [Results](README.md#result)
 
