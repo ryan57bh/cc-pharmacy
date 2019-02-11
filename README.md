@@ -51,10 +51,8 @@ The directory structure of this project is as follows:
 
     ├── README.md 
     ├── run.sh
-    ├── run_unittest.sh 
     ├── src
     │   └── pharmacy-counting.py
-    |   └── pharm_unittest.py
     ├── input
     │   └── itcont.txt
     ├── output
@@ -76,6 +74,8 @@ The directory structure of this project is as follows:
 
 ## Instruction 
 
+The program requires `Python 3.6.7`. 
+
 ### The original test from Insight 
 
 I executed the provided test using the following command :
@@ -86,19 +86,24 @@ insight_testsuite~$ sh run_tests.sh
 
 The output is
 
-    -e [PASS]: test_1 top_cost_drug.txt
-    -e [PASS]: unittest top_cost_drug.txt
-    [Sat Feb  9 16:42:26 CST 2019] 2 of 2 tests passed
+    [Sun Feb 10 20:18:47 CST 2019] 2 of 2 tests passed
 
-### The extra unittest in `tests/unittest` folder
+### The extra embeded unittest
 
-In addition to the provided test, I included a separate unittest in `insight_testsuites/tests/unittest` folder to test the functions defined in the `pharmacy-counting.py`. The input file is part of `de_cc_data.txt` which was downloaded from the link to 24 million dollars. 
+In addition to the provided test, I included a separate unittest written in `pharmacy_counting.py` to test the functions. 
+In the `insight_testsuite/tests/unittest` folder, I use a part of `de_cc_data.txt`, which was downloaded from the link to 24 million records, as the input file as the additional unittest. 
 
-To perform the test, use `run_unittest.sh` in the main directory as follows. 
+To perform the test, activate the following line in `run.sh` in the main directory as follows. 
 
 ```
-pharmacy_counting~$ sh run_unittest.sh 
+python ./src/pharmacy_counting.py ./insight_testsuite/tests/unittest/input/itcont.txt  ./insight_testsuite/tests/unittest/output/top_cost_drug.txt
+
+```
+Then, in the main directory, execute the following 
+```
+pharmacy_counting~$ sh run.sh 
 ```    
+It will generate the output file in `insight_testsuite/tests/unittest/output` folder and complete the tests. 
 
 ## Results
 
