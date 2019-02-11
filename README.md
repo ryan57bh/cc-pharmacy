@@ -74,7 +74,7 @@ The directory structure of this project is as follows:
 
 ## Instruction 
 
-The program requires `Python 3.6.7`. 
+The program requires `Python 3.6.7` and imports `sys, random`. 
 
 ### The original test from Insight 
 
