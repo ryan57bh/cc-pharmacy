@@ -21,7 +21,7 @@ def process_name(data):
     
     for line in data: 
         id, last, first, drug_name, cost = line.split(',')
-        patient_name = first + "-" + last
+        patient_name = first + " " + last
         drug.setdefault(drug_name, []).append(patient_name)  
         
     for k, v in drug.items(): 
@@ -47,7 +47,7 @@ def process_cost(data):
     drug = {}
     for line in data: 
         *_, drug_name, cost = line.split(',')
-        cost_num = int(cost)
+        cost_num = round(float(cost.rstrip('\n')),2)
         drug[drug_name] = drug.get(drug_name, 0) + cost_num
   
     return drug
