@@ -34,15 +34,15 @@ These files are provided in the `insight_testsuite/tests/test_1/input` and `insi
 
 ## Input processing 
 
-This program utilize the embedded dictionary class in Python. Given that the end-goal is to create a list summarizing each drug name, I design the dictionary with each drug name as the key and a list as its values. It achieves the tidiness of the data structure, when each drug name only has one entry for look-up. The list of value contains the total number of unique patients as its first element and the sum of total cost as its second element. 
+This program utilizes the embedded dictionary class in Python. To create a list summarizing each drug's information, I design the dictionary with drug names as the **key** and a list as its **values**. It achieves the tidiness of the data structure, when each drug name only has one entry for look-up. The list of value contains the **total number of unique patients** as its **first** element and the **total cost** as its **second** element. 
 
-In order count the number of unique patients with the prescription of each drug, I will first create a separate dictionary with drug name as its key and a list of patients names as its value. Then, after converting the list to a set and calculate its size, I create a dictionary with the number of unique patients. 
+In order to count the number of unique patients prescribed for each drug, I create a separate dictionary with drug name as its key and a list of patients names as its value. Then, after converting the list to a set and calculate its size, I create a dictionary with the number of unique patients. 
 
-Similarly, exploiting the attributes of dictionary, I create another one with sum of total cost of each drug. Since two dictionaries share the exactly same keys, I can merge them to get the final dictionary as planned. 
+Similarly, exploiting the attributes of dictionary, I create another one for the total cost of each drug. Since two dictionaries share the exactly same key, I can merge them to get the final dictionary as planned. 
 
 ## Sorting 
 
-To present all the drugs first sorted in descending order by cost and in ascending order by name, I leverage ``sorted`` function based on the dictionary value, specifically the second number of in the value of each dictionary value. It is the total cost of each drug. I specify the sorting as descending, while Python sorts the drug name in an ascending order alphabetically by default. 
+To present all the drugs sorted in a descending order by cost first and in an ascending order by name second, I leverage ``sorted`` function based on the dictionary value. I specify the cost sorting as descending, while Python sorts the drug name among those with the same cost in an ascending order alphabetically by default. 
 
 
 # Repo directory structure
